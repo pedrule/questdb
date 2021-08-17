@@ -550,7 +550,9 @@ open module io.questdb {
 //                  Change string case
             io.questdb.griffin.engine.functions.str.ToUppercaseFunctionFactory,
             io.questdb.griffin.engine.functions.str.ToLowercaseFunctionFactory,
-
+            io.questdb.griffin.engine.functions.str.ToBase62FunctionFactory,
+            io.questdb.griffin.engine.functions.str.UUIDToBase62FunctionFactory,
+            io.questdb.griffin.engine.functions.geohash.LatLonGeoHashFunctionFactory,
             // analytic functions
             io.questdb.griffin.engine.functions.analytic.RowNumberFunctionFactory,
 
