@@ -27,12 +27,11 @@ stages:
             name: start_agent
             displayName: 'Start ARM build agent'
 
-  - stage: RunTestsBranches
-    displayName: "Running tests"
+  - stage: BuildBinaries
+    displayName: "Building C++ binaries"
     jobs:
       - job: RunOn
         displayName: "on"
-        dependsOn: CheckChanges
         strategy:
           matrix:
             linux:
