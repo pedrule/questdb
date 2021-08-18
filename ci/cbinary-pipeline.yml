@@ -67,6 +67,8 @@ stages:
             displayName: "Increase file count on Linux"
             condition: eq(variables['Agent.OS'], 'Linux')
           - bash: |
+              ls -la
+              ls "$(Build.BinariesDirectory)"/core
               cd "$(Build.BinariesDirectory)"/core
               cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles"
               cmake -DCMAKE_BUILD_TYPE=Release -B cmake-build-release -S.
