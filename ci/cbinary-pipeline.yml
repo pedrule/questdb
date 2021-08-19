@@ -69,8 +69,7 @@ stages:
           - bash: |
               echo $(pwd)
               ls -la
-              ls "$(Build.BinariesDirectory)"/core
-              cd "$(Build.BinariesDirectory)"/core
+              cd core
               cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles"
               cmake -DCMAKE_BUILD_TYPE=Release -B cmake-build-release -S.
               cmake --build cmake-build-release --config Release
