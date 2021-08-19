@@ -72,7 +72,8 @@ stages:
           - script: |
               curl.exe -o setup-x86.exe https://cygwin.com/setup-x86.exe
               start setup-x86.exe --no-admin --quiet-mode --site  https://mirrors.163.com/cygwin
-            displayName: "Install CygWin"
+              echo "##vso[task.prependpath]c:\cygwin\bin"
+            displayName: "Install CygWin Windows"
             condition: eq(variables['Agent.OS'], 'Windows_NT')
           - bash: |
               curl https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/macosx/nasm-2.15.05-macosx.zip -o nasm.zip
