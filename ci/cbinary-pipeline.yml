@@ -71,7 +71,7 @@ stages:
             condition: eq(variables['Agent.OS'], 'Linux')
           - script: |
               curl.exe -o setup-x86.exe https://cygwin.com/setup-x86.exe
-              start setup-x86_64.exe --no-admin --quiet-mode --site https://mirrors.163.com/cygwin
+              start setup-x86.exe --no-admin --quiet-mode --site  https://mirrors.163.com/cygwin
             displayName: "Install CygWin"
             condition: eq(variables['Agent.OS'], 'Windows_NT')
           - bash: |
