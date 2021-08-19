@@ -67,6 +67,7 @@ stages:
             displayName: "Increase file count on Linux"
             condition: eq(variables['Agent.OS'], 'Linux')
           - bash: |
+              sudo yum groupinstall -y "Development Tools"
               echo $(pwd)
               ls -la
               cd core
