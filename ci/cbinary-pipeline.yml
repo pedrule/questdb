@@ -71,7 +71,7 @@ stages:
             condition: eq(variables['Agent.OS'], 'Linux')
           - script: |
               curl.exe -o setup-x86.exe https://cygwin.com/setup-x86.exe
-              setup-x86_64.exe --no-admin --quiet-mode
+              start setup-x86_64.exe --no-admin --quiet-mode
             displayName: "Install CygWin"
             condition: eq(variables['Agent.OS'], 'Windows_NT')
           - bash: |
@@ -92,7 +92,7 @@ stages:
           - task: CMake@1
             inputs:
               workingDirectory: core
-              cmakeArgs: cmake --build cmake-build-release --config Release
+              cmakeArgs: --build cmake-build-release --config Release
           # - bash: |
           #     sudo apt-get update
           #     sudo apt-get install build-essential
