@@ -67,6 +67,7 @@ stages:
             displayName: "Increase file count on Linux"
             condition: eq(variables['Agent.OS'], 'Linux')
           - bash: |
+              echo $(pwd)
               ls -la
               ls "$(Build.BinariesDirectory)"/core
               cd "$(Build.BinariesDirectory)"/core
