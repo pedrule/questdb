@@ -56,7 +56,7 @@ public class GeoHashNativeTest {
         final long gh = GeoHashes.fromCoordinates(lat, lon, 8 * 5);
         sink.clear();
         GeoHashes.toString(gh, 8, sink);
-        final long gh1 = GeoHashes.fromStringNl(sink);
+        final long gh1 = GeoHashes.fromString(sink, 8);
         Assert.assertEquals(gh, gh1);
     }
 
@@ -77,15 +77,6 @@ public class GeoHashNativeTest {
         Assert.assertEquals(GeoHashes.fromCoordinates(lat, lon, 6 * 5), GeoHashes.fromBitString("111001100111100000111100010001"));
         Assert.assertEquals(GeoHashes.fromCoordinates(lat, lon, 7 * 5), GeoHashes.fromBitString("11100110011110000011110001000110001"));
         Assert.assertEquals(GeoHashes.fromCoordinates(lat, lon, 8 * 5), GeoHashes.fromBitString("1110011001111000001111000100011000111111"));
-    }
-
-    @Test
-    public void testToHash() throws NumericException {
-        final long gh = GeoHashes.fromCoordinates(lat, lon, 8 * 5);
-        final long ghz = GeoHashes.toHashWithSize(gh, 8);
-        Assert.assertEquals(gh, GeoHashes.toHash(ghz));
-        Assert.assertEquals(0, GeoHashes.hashSize(gh));
-        Assert.assertEquals(8, GeoHashes.hashSize(ghz));
     }
 
     @Test
@@ -249,7 +240,7 @@ public class GeoHashNativeTest {
         }
 
         for (int i = 0; i < maxGeoHashSizeChars; i++) {
-            final long gh = GeoHashes.fromStringNl(expectedStr[i]);
+            final long gh = GeoHashes.fromString(expectedStr[i], expectedStr[i].length());
             Assert.assertEquals(expectedHash[i], gh);
             sink.clear();
             GeoHashes.toString(gh, expectedStr[i].length(), sink);
@@ -322,8 +313,8 @@ public class GeoHashNativeTest {
 
     @Test
     public void testFromStringNull() throws NumericException {
-        Assert.assertEquals(GeoHashes.fromStringNl(null), GeoHashes.NULL);
-        Assert.assertEquals(GeoHashes.fromStringNl(""), GeoHashes.NULL);
+        Assert.assertEquals(GeoHashes.fromString(null, 0), GeoHashes.NULL);
+        Assert.assertEquals(GeoHashes.fromString("", 0), GeoHashes.NULL);
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
