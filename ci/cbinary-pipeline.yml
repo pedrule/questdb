@@ -66,14 +66,19 @@ stages:
           - bash: sudo sysctl -w fs.file-max=500000
             displayName: "Increase file count on Linux"
             condition: eq(variables['Agent.OS'], 'Linux')
-          - bash: |
-              sudo apt install build-essential
-              echo $(pwd)
-              ls -la
-              cd core
-              cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles"
-              cmake -DCMAKE_BUILD_TYPE=Release -B cmake-build-release -S.
-              cmake --build cmake-build-release --config Release
+            - task: CMake@1
+              inputs:
+                workingDirectory: core
+                cmakeArgs: -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles"
+          # - bash: |
+          #     sudo apt-get update
+          #     sudo apt-get install build-essential
+          #     echo $(pwd)
+          #     ls -la
+          #     cd core
+          #     cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles"
+          #     cmake -DCMAKE_BUILD_TYPE=Release -B cmake-build-release -S.
+          #     cmake --build cmake-build-release --config Release
             displayName: 'Compile OS binary'
           
           # - bash: |
