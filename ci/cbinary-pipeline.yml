@@ -71,8 +71,8 @@ stages:
             condition: eq(variables['Agent.OS'], 'Linux')
           - bash: |
               curl https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/macosx/nasm-2.15.05-macosx.zip -o nasm.zip
-              unzip nasm.zip 
-              mv nasm* /usr/bin/
+              unzip nasm.zip && rm -f nasm.zip
+              sudo mv nasm* /usr/bin/nasm
             displayName: "Install NASM Mac"
             condition: eq(variables['Agent.OS'], 'Darwin')
           - task: CMake@1
