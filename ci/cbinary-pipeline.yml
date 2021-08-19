@@ -70,7 +70,7 @@ stages:
             displayName: "Install NASM Linux"
             condition: eq(variables['Agent.OS'], 'Linux')
           - bash: |
-              curl https://www.nasm.us/pub/nasm/releasebuilds/2.14.03rc2/macosx/nasm-2.15.05-macosx.zip -o nasm.zip
+              curl https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/macosx/nasm-2.15.05-macosx.zip -o nasm.zip
               unzip nasm.zip 
               mv nasm* /usr/bin/
             displayName: "Install NASM Mac"
