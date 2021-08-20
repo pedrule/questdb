@@ -74,8 +74,10 @@ stages:
               mkdir 7zip
               tar -xf 7za920.zip -C 7zip
               curl.exe -o x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z https://kumisystems.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z
-              mkdir mingw
+              
               start 7zip/7za.exe x x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z
+              dir
+              cd
               echo "##vso[task.prependpath]%AGENT_BUILDDIRECTORY%\mingw\bin"
               dir %AGENT_BUILDDIRECTORY%\mingw\bin
               path
