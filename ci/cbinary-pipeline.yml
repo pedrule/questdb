@@ -70,9 +70,13 @@ stages:
             displayName: "Install NASM Linux"
             condition: eq(variables['Agent.OS'], 'Linux')
           - script: |
-              curl.exe -o setup-x86.exe https://cygwin.com/setup-x86.exe
-              start setup-x86.exe --no-admin --quiet-mode --site  https://mirrors.163.com/cygwin
-              echo "##vso[task.prependpath]c:\cygwin\bin"
+              curl.exe -o 7za920.zip https://www.7-zip.org/a/7za920.zip
+              mkdir 7zip
+              tar -xf 7za920.zip -C 7zip
+              curl.exe -o x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z https://kumisystems.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z
+              mkdir mingw
+              start 7zip/7za.exe x x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z
+              echo "##vso[task.prependpath]%AGENT_BUILDDIRECTORY%\mingw\bin"
             displayName: "Install CygWin Windows"
             condition: eq(variables['Agent.OS'], 'Windows_NT')
           - bash: |
