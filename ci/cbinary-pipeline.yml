@@ -73,7 +73,7 @@ stages:
               curl.exe -o 7za920.zip https://www.7-zip.org/a/7za920.zip
               mkdir 7zip
               tar -xf 7za920.zip -C 7zip
-              curl.exe -o x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z https://kumisystems.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z
+              curl.exe -L -o x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z https://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z?ts=gAAAAABhH5L3aq1EYuKRY1RqmT0rR83fNFE1xKMqadUXZ77T4jEUHJ1wSjgJlHGP6EZc1Yij6ApY27cdnzevh75Wtuq5dEu8tA%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmingw-w64%2Ffiles%2FToolchains%2520targetting%2520Win64%2FPersonal%2520Builds%2Fmingw-builds%2F8.1.0%2Fthreads-posix%2Fseh%2Fx86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z%2Fdownload
               
               start 7zip/7za.exe x x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z
               dir
