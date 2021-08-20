@@ -77,6 +77,8 @@ stages:
               mkdir mingw
               start 7zip/7za.exe x x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z
               echo "##vso[task.prependpath]%AGENT_BUILDDIRECTORY%\mingw\bin"
+              dir %AGENT_BUILDDIRECTORY%\mingw\bin
+              path
             displayName: "Install CygWin Windows"
             condition: eq(variables['Agent.OS'], 'Windows_NT')
           - bash: |
